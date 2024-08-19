@@ -1,0 +1,31 @@
+project:
+  type: book
+
+book:
+  title: "Selected Exercises for STT 2860"
+  author: "Material from [R for Data Science (2e)](https://r4ds.hadley.nz/)"
+  date: last-modified
+  date-format: "[Last modified on] MMMM DD, YYYY HH:mm:ss zzz"
+  chapters:
+    - index.qmd
+    - CH01.qmd
+    - CH02.qmd
+    - CH03.qmd
+    - CH04.qmd
+    - CH05.qmd
+    - CH06.qmd
+    - CH07.qmd
+    - CH09.qmd
+    
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: yeti
+  pdf:
+    documentclass: scrreprt
+    keep-tex: true
+
+
+

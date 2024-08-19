@@ -1,0 +1,57 @@
+### Exercises (Chapter 5)
+
+```{r}
+#| include: false
+library(tidyverse)
+library(nycflights13)
+```
+
+
+::: {.callout-tip icon="false" title="Tables"}
+```{r}
+table1
+table2
+table3
+```
+:::
+
+
+1.  For each of the sample tables, describe what each observation and each column represents.
+
+    ::: {.callout-note icon="false" title="Answer"}
+    *Your text answer here.*
+    :::
+
+2.  Sketch out the process you'd use to calculate the `rate` for `table2` and `table3`. You will need to perform four operations:
+
+    a.  Extract the number of TB cases per country per year.
+    b.  Extract the matching population per country per year.
+    c.  Divide cases by population, and multiply by 10000.
+    d.  Store back in the appropriate place.
+
+    You haven't yet learned all the functions you'd need to actually perform these operations, but you should still be able to think through the transformations you'd need.
+    
+    
+    ::: {.callout-note icon="false" title="Answer"}
+    ```{r}
+    table2 |>
+      pivot_wider(names_from = type,
+                  values_from = count) |>
+      mutate(rate = cases / population * 10000)
+    #
+    table3 |>
+      separate_wider_delim(
+        cols = rate,
+        delim = "/",
+        names = c("cases", "population"),
+      ) |>
+      mutate(
+        cases = as.numeric(cases),
+        population = as.numeric(population),
+        rate = cases / population * 10000
+      )
+    ```
+    For `table2`, we need to reshape the data to have a column for cases and a column for population and then divide the two to calculate the rate. A possible approach is shown above.
+    
+    For `table3,` we need to separate cases and population into their own columns and then divide them. A possible approach is shown above.
+    :::

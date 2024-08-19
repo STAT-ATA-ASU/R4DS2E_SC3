@@ -1,0 +1,149 @@
+### Exercises (Chapter 7)
+
+```{r}
+#| include: false
+library(tidyverse)
+```
+
+
+1.  What function would you use to read a file where fields were separated with "\|"?
+
+    ::: {.callout-note icon="false" title="Answer"}
+    *Your text answer here.*
+    :::
+
+2.  Apart from `file`, `skip`, and `comment`, what other arguments do `read_csv()` and `read_tsv()` have in common?
+
+    ::: {.callout-note icon="false" title="Answer"}
+    *Your text answer here.*
+    :::
+
+3.  What are the most important arguments to `read_fwf()`?
+
+    ::: {.callout-note icon="false" title="Answer"}
+    *Your text answer here.*
+    :::
+
+4.  Sometimes strings in a CSV file contain commas. To prevent them from causing problems, they need to be surrounded by a quoting character, like `"` or `'`. By default, `read_csv()` assumes that the quoting character will be `"`. To read the following text into a data frame, what argument to `read_csv()` do you need to specify?
+
+    ```{r}
+    #| eval: false
+
+    "x,y\n1,'a,b'"
+    ```
+    
+    ::: {.callout-note icon="false" title="Answer"}
+    We need to specify the `quote` argument.
+    ```{r}
+    read_csv("x,y\n1,'a,b'", quote = "\'")
+    ```
+    
+    :::
+
+5.  Identify what is wrong with each of the following inline CSV files. What happens when you run the code?
+
+    ```{r}
+    #| eval: false
+
+    read_csv("a,b\n1,2,3\n4,5,6")
+    read_csv("a,b,c\n1,2\n1,2,3,4")
+    read_csv("a,b\n\"1")
+    read_csv("a,b\n1,2\na,b")
+    read_csv("a;b\n1;3")
+    ```
+    
+    ::: {.callout-note icon="false" title="Answer"}
+    ```{r}
+    read_csv("a,b\n1,2,3\n4,5,6")
+    ```
+    There are only two column headers but three values in each row, so the last two get merged.
+    :::
+    
+    ::: {.callout-note icon="false" title="Answer"}
+    ```{r}
+    read_csv("a,b,c\n1,2\n1,2,3,4")
+    ```
+    here are only three column headers, first row is missing a value in the last column so gets an NA there, the second row has four values so the last two get merge
+    :::
+    
+    ::: {.callout-note icon="false" title="Answer"}
+    ```{r}
+    read_csv("a,b\n\"1")
+    ```
+    No rows are read in.
+    :::
+    
+    ::: {.callout-note icon="false" title="Answer"}
+    ```{r}
+    read_csv("a,b\n1,2\na,b")
+    ```
+    Each column has a numerical and a character value, so the column type is coerced to character.
+    :::
+    
+    ::: {.callout-note icon="false" title="Answer"}
+    ```{r}
+    read_csv("a;b\n1;3")
+    ```
+    The delimiter is `;` but it’s not specified, therefore this is read in as a single-column data frame with a single observation.
+    :::
+    
+    
+
+6.  Practice referring to non-syntactic names in the following data frame by:
+
+    ```{r}
+    set.seed(321)
+    annoying <- tibble(
+      `1` = 1:10,
+      `2` = `1` * 2 + rnorm(length(`1`))
+    )
+    ```
+
+    a.  Extracting the variable called `1`.
+    
+        ::: {.callout-note icon="false" title="Answer"}
+        ```{r}
+        annoying |> 
+          select(`1`)
+        # or
+        annoying$`1`
+        ```
+    
+        :::
+    
+    b.  Plotting a scatterplot of `1` vs. `2`.
+    
+        ::: {.callout-note icon="false" title="Answer"}
+        ```{r}
+        annoying |> 
+          ggplot(aes(x = `2`, y = `1`)) + 
+            geom_point()
+        ```
+    
+        :::
+    c.  Creating a new column called `3`, which is `2` divided by `1`.
+    
+        ::: {.callout-note icon="false" title="Answer"}
+        ```{r}
+        annoying |> 
+          mutate(`3` = `2`/`1`)
+        ```
+    
+        :::
+    
+    d.  Renaming the columns to `one`, `two`, and `three`.
+
+        ::: {.callout-note icon="false" title="Answer"}
+        ```{r}
+        annoying |> 
+          mutate(`3` = `2`/`1`) |> 
+            rename(
+            "one" = `1`,
+            "two" = `2`,
+            "three" = `3`
+            )
+        ```
+    
+        :::
+
+    

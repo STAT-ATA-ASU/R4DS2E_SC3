@@ -1,0 +1,13 @@
+### Exercises (Chapter 6)
+
+1.  Go to the RStudio Tips Twitter account, <https://twitter.com/rstudiotips> and find one tip that looks interesting. Practice using it!
+
+    ::: {.callout-note icon="false" title="Answer"}
+    *Your text answer here.*
+    :::
+
+2.  What other common mistakes will RStudio diagnostics report? Read <https://support.posit.co/hc/en-us/articles/205753617-Code-Diagnostics> to find out.
+
+    ::: {.callout-note icon="false" title="Answer"}
+    *Your text answer here.*
+    :::

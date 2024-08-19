@@ -1,0 +1,72 @@
+```{r}
+#| include: false
+library(tidyverse)
+library(palmerpenguins)
+```
+
+### Exercises (Chapter 2)
+
+1.  Why does this code not work?
+
+    ```{r}
+    #| error: true
+    #| eval: false
+    my_variable <- 10
+    my_varıable
+    ```
+
+    Look carefully! (This may seem like an exercise in pointlessness, but training your brain to notice even the tiniest difference will pay off when programming.)
+    
+    ::: {.callout-note icon="false" title="Answer"}
+    *Your answer here.*
+    :::
+    
+2.  Tweak each of the following R commands so that they run correctly:
+
+    ```{r}
+    #| eval: false
+
+    libary(todyverse)
+    ggplot(dTA = mpg) + 
+      geom_point(maping = aes(x = displ y = hwy)) +
+      geom_smooth(method = "lm)
+    ```
+    
+    ::: {.callout-note icon="false" title="Answer"}
+    ```{r}
+    #| message: false
+    # Your R code here
+    ```
+    
+    :::
+
+3.  Press Option + Shift + K / Alt + Shift + K. What happens? How can you get to the same place using the menus?
+
+    ::: {.callout-note icon="false" title="Answer"}
+    *Your answer here.*
+    :::
+
+4.  Let's revisit an exercise from "Saving Your Plots". Run the following lines of code. Which of the two plots is saved as `mpg-plot.png`? Why?
+
+    ```{r}
+    #| eval: false
+
+    my_bar_plot <- ggplot(mpg, aes(x = class)) +
+      geom_bar()
+    my_scatter_plot <- ggplot(mpg, aes(x = cty, y = hwy)) +
+      geom_point()
+    ggsave(filename = "mpg-plot.png", plot = my_bar_plot)
+    ```
+    
+    ::: {.callout-note icon="false" title="Answer"}
+    
+    ```{r}
+    my_bar_plot <- ggplot(mpg, aes(x = class)) +
+      geom_bar()
+    my_scatter_plot <- ggplot(mpg, aes(x = cty, y = hwy)) +
+      geom_point()
+    ggsave(filename = "mpg-plot.png", plot = my_bar_plot)
+    ```
+    
+    *Your answer here.*
+    :::

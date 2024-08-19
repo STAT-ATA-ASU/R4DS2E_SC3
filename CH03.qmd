@@ -1,0 +1,386 @@
+```{r}
+#| include: false
+library(tidyverse)
+library(nycflights13)
+```
+
+### Exercises (Chapter 3)
+
+1.  In a single pipeline for each condition, find all flights that meet the condition:
+
+    -   Had an arrival delay of two or more hours
+    
+        ::: {.callout-note icon="false" title="Answer"}
+        ```{r}
+        #| message: false
+        #| warning: false
+        library(tidyverse)
+        library(nycflights13)
+        # Your code here
+        ```
+        :::
+    -   Flew to Houston (`IAH` or `HOU`)
+    
+        ::: {.callout-note icon="false" title="Answer"}
+        ```{r}
+        # Your code here
+        ```
+        :::
+    -   Were operated by United, American, or Delta
+    
+        ::: {.callout-note icon="false" title="Answer"}
+        ```{r}
+        # Your code here
+        ```
+        :::
+        
+    -   Departed in summer (July, August, and September)
+    
+        ::: {.callout-note icon="false" title="Answer"}
+        ```{r}
+        # Your code here
+        ```
+        :::
+        
+    -   Arrived more than two hours late, but didn't leave late.
+    
+        ::: {.callout-note icon="false" title="Answer"}
+        ```{r}
+        # Your code here
+        ```
+        :::
+    
+    -   Were delayed by at least an hour, but made up over 30 minutes in flight
+    
+        ::: {.callout-note icon="false" title="Answer"}
+        ```{r}
+        # Your code here
+        ```
+        :::
+
+
+2.  Sort `flights` to find the flights with longest departure delays. Find the flights that left earliest in the morning.
+
+    ::: {.callout-note icon="false" title="Answer"}
+    ```{r}
+    # Your code here
+    ```
+    
+    :::
+
+3.  Sort `flights` to find the fastest flights. (Hint: Try including a math calculation inside of your function.)
+
+    ::: {.callout-note icon="false" title="Answer"}
+    ```{r}
+    # Your code here
+    ```
+    
+    :::
+
+4.  Was there a flight on every day of 2013?
+
+    ::: {.callout-note icon="false" title="Answer"}
+    ```{r}
+    # Your code here
+    ```
+    *Your text answer here.*
+    :::
+
+5.  Which flights traveled the farthest distance? Which traveled the least distance?
+
+    ::: {.callout-note icon="false" title="Answer"}
+    ```{r}
+    # Your code here
+    ```
+    
+    :::
+
+6.  Does it matter what order you used `filter()` and `arrange()` if you're using both? Why/why not? Think about the results and how much work the functions would have to do.
+
+    ```{r}
+    #| eval: false
+    #| echo: false
+    # Your code here
+    ```
+    
+    ::: {.callout-note icon="false" title="Answer"}
+    *Your text answer here.*
+    :::
+
+7.  Compare `dep_time`, `sched_dep_time`, and `dep_delay`. How would you expect those three numbers to be related?
+
+    ::: {.callout-note icon="false" title="Answer"}
+    ```{r}
+    # Your code here
+    ```
+    *Your text answer here.*
+    :::
+
+8.  Brainstorm as many ways as possible to select `dep_time`, `dep_delay`, `arr_time`, and `arr_delay` from `flights`.
+
+    ::: {.callout-note icon="false" title="Answer"}
+    ```{r}
+    # Your code here
+    ```
+    
+    :::
+
+9.  What happens if you specify the name of the same variable multiple times in a `select()` call?
+
+    ::: {.callout-note icon="false" title="Answer"}
+    ```{r}
+    # Your code here
+    ```
+    *Your text answer here.*
+    :::
+
+10. What does the `any_of()` function do? Why might it be helpful in conjunction with this vector?
+
+    ```{r}
+    variables <- c("year", "month", "day", "dep_delay", "arr_delay")
+    # Try below first
+    flights |> 
+      select(variables)
+    # Or
+    flights |> 
+      select(any_of(variables))
+    ```
+
+    
+    ::: {.callout-note icon="false" title="Answer"}
+    *Your text answer here.*
+    :::
+
+11. Does the result of running the following code surprise you? How do the select helpers deal with upper and lower case by default? How can you change that default?
+
+    ```{r}
+    #| eval: false
+    flights |> 
+      select(contains("TIME"))
+    ```
+    
+    ::: {.callout-note icon="false" title="Answer"}
+    ```{r}
+    flights |> 
+      select(contains("TIME"))
+    ```
+    *Your text answer here.*
+    :::
+
+12. Rename `air_time` to `air_time_min` to indicate units of measurement and move it to the beginning of the data frame.
+
+    ::: {.callout-note icon="false" title="Answer"}
+    ```{r}
+    # Your code here
+    ```
+    
+    :::
+    
+13. Why doesn't the following work, and what does the error mean?
+
+    ```{r}
+    #| error: true
+    flights |> 
+      select(tailnum) |> 
+      arrange(arr_delay)
+    ```
+
+    ```{r}
+    flights |> 
+      select(tailnum)
+    ```
+
+    ::: {.callout-note icon="false" title="Answer"}
+    *Your text answer here.*
+    :::
+
+14. Which carrier has the worst average delays? Challenge: can you disentangle the effects of bad airports vs. bad carriers? Why/why not? (Hint: think about `flights |> group_by(carrier, dest) |> summarize(n())`)
+
+    ::: {.callout-note icon="false" title="Answer"}
+    ```{r}
+    # Your code here
+    ```
+    *Your text answer here.*
+    :::
+
+15. Find the flights that are most delayed upon departure from each destination.
+
+    ::: {.callout-note icon="false" title="Answer"}
+    ```{r}
+    # Your code here
+    ```
+    *Your text answer here.*
+    :::
+
+16. How do delays vary over the course of the day. Illustrate your answer with a plot.
+
+    ::: {.callout-note icon="false" title="Answer"}
+    ```{r}
+    #| warning: false
+    # Your code here
+    ```
+    *Your text answer here.*
+    :::
+
+17. What happens if you supply a negative `n` to `slice_min()` and friends?
+
+    ::: {.callout-note icon="false" title="Answer"}
+    ```{r}
+    flights |> 
+      slice_min(dep_delay, n = -5) |>
+      relocate(dep_delay)
+
+    flights |> 
+      slice_min(dep_delay, n = 5) |>
+      relocate(dep_delay)
+    
+    flights |> 
+      slice_max(dep_delay, n = -5) |>
+      relocate(dep_delay)
+    
+    flights |> 
+      slice_max(dep_delay, n = 5) |>
+      relocate(dep_delay)
+    ```
+    *Your text answer here.*
+    :::
+
+18. Explain what `count()` does in terms of the dplyr verbs you just learned.  What does the `sort` argument to `count()` do?
+
+    ::: {.callout-note icon="false" title="Answer"}
+    ```{r}
+    flights |> 
+      count(origin, dest, sort = FALSE) # sort = FALSE by   default
+    flights |> 
+      count(origin, dest, sort = TRUE)
+    ```
+    *Your text answer here.*
+    :::
+
+19. Suppose we have the following tiny data frame:
+
+    ```{r}
+    df <- tibble(
+      x = 1:5,
+      y = c("a", "b", "a", "a", "b"),
+      z = c("K", "K", "L", "L", "K")
+    )
+    ```
+
+a.  Write down what you think the output will look like, then check if you were correct, and describe what `group_by()` does.
+
+    ```{r}
+    #| eval: false
+            
+    df |>
+      group_by(y)
+    ```
+    
+    ::: {.callout-note icon="false" title="Answer"}
+    ```{r}
+    df |>
+      group_by(y)
+    ```
+    *Your text answer here.*
+    :::
+
+b.  Write down what you think the output will look like, then check if you were correct, and describe what `arrange()` does. Also comment on how it's different from the `group_by()` in part (a).
+
+    ```{r}
+    #| eval: false
+            
+    df |>
+      arrange(y)
+    ```
+    
+    ::: {.callout-note icon="false" title="Answer"}
+    ```{r}
+    df |>
+      arrange(y)
+    ```
+    *Your text answer here.*
+    :::
+    
+c.  Write down what you think the output will look like, then check if you were correct, and describe what the pipeline does.
+
+    ```{r}
+    #| eval: false
+            
+    df |>
+      group_by(y) |>
+      summarize(mean_x = mean(x))
+    ```
+
+    ::: {.callout-note icon="false" title="Answer"}
+    ```{r}
+    df |>
+      group_by(y) |>
+      summarize(mean_x = mean(x))
+    ```
+    *Your text answer here.*
+    :::
+    
+d.  Write down what you think the output will look like, then check if you were correct, and describe what the pipeline does. Then, comment on what the message says.
+
+    ```{r}
+    #| eval: false
+            
+    df |>
+      group_by(y, z) |>
+      summarize(mean_x = mean(x))
+    ```
+
+    ::: {.callout-note icon="false" title="Answer"}
+    ```{r}
+    df |>
+      group_by(y, z) |>
+      summarize(mean_x = mean(x))
+    ```
+    *Your text answer here.*
+    :::
+    
+e.  Write down what you think the output will look like, then check if you were correct, and describe what the pipeline does. How is the output different from the one in part (d)?
+
+    ```{r}
+    #| eval: false
+            
+    df |>
+      group_by(y, z) |>
+      summarize(mean_x = mean(x), .groups = "drop")
+    ```
+
+    ::: {.callout-note icon="false" title="Answer"}
+    ```{r}
+    df |>
+      group_by(y, z) |>
+      summarize(mean_x = mean(x), .groups = "drop")
+    ```
+    *Your text answer here.*
+    :::
+    
+f.  Write down what you think the outputs will look like, then check if you were correct, and describe what each pipeline does. How are the outputs of the two pipelines different?
+
+    ```{r}
+    #| eval: false
+            
+    df |>
+      group_by(y, z) |>
+      summarize(mean_x = mean(x))
+            
+    df |>
+      group_by(y, z) |>
+      mutate(mean_x = mean(x))
+    ```
+
+    ::: {.callout-note icon="false" title="Answer"}
+    ```{r}
+    df |>
+      group_by(y, z) |>
+      summarize(mean_x = mean(x))
+            
+    df |>
+      group_by(y, z) |>
+      mutate(mean_x = mean(x))
+    ```
+    *Your text answer here.*
+    :::
