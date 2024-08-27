@@ -23,7 +23,9 @@ bibliography: references.bib
 
 format:
   html:
-    theme: yeti
+    theme:
+      light: litera
+      dark: cyborg  
   pdf:
     documentclass: scrreprt
     keep-tex: true
