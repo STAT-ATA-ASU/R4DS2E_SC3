@@ -2,4 +2,4 @@
 
 This document takes selected Exercises from [R for Data Science (2e)](https://r4ds.hadley.nz/) and puts them in a Quarto book so you can modify the files to add your answers to the questions.
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+To learn more about Quarto books please visit <https://quarto.org/docs/books>.

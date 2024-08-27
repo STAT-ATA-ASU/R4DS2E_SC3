@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Selected Exercises for STT 2860",
     "section": "",
-    "text": "Preface\nThis document takes selected Exercises from R for Data Science (2e) and puts them in a Quarto book so you can modify the files to add your answers to the questions.\nTo learn more about Quarto books visit https://quarto.org/docs/books."
+    "text": "Preface\nThis document takes selected Exercises from R for Data Science (2e) and puts them in a Quarto book so you can modify the files to add your answers to the questions.\nTo learn more about Quarto books please visit https://quarto.org/docs/books."
   },
   {
     "objectID": "CH01.html",
