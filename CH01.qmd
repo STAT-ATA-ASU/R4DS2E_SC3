@@ -18,7 +18,7 @@
 2.  What does the `bill_depth_mm` variable in the `penguins` data frame describe? Read the help for `?penguins` to find out.
 
     ::: {.callout-note icon="false" title="Answer"}
-    *Your answer here.*
+    *Type your answer here.*
     :::
 
 3.  Make a scatterplot of `bill_depth_mm` vs. `bill_length_mm`. That is, make a scatterplot with `bill_depth_mm` on the y-axis and `bill_length_mm` on the x-axis. Describe the relationship between these two variables.
